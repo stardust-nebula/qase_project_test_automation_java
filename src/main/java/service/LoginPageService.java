@@ -12,13 +12,23 @@ import static util.StringConstant.LOGIN_PAGE_URL;
 public class LoginPageService {
     private LoginPage loginPage = new LoginPage();
 
-    @Step("Authorization")
-    public ProjectsPage login(User user){
+    @Step("Authorization with valid credentials")
+    public ProjectsPage loginValidCredentials(User user) {
         log.info("Login as user " + user.getEmail());
         loginPage.openPage(LOGIN_PAGE_URL)
                 .enterEmail(user.getEmail())
                 .enterPassword(user.getPassword())
                 .clickLoginButton();
         return new ProjectsPage();
+    }
+
+    @Step("Authorization with invalid credentials")
+    public LoginPage loginInvalidCredentials(User user) {
+        log.info("Login as user " + user.getEmail());
+        loginPage.openPage(LOGIN_PAGE_URL)
+                .enterEmail(user.getEmail())
+                .enterPassword(user.getPassword())
+                .clickLoginButton();
+        return loginPage;
     }
 }

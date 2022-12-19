@@ -1,5 +1,6 @@
 package page;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,5 +27,10 @@ public class ProjectsPage extends BasePage {
         return projectsPageTitle.getText();
     }
 
-
+    @Step("Click on the 'Create new project' button")
+    public void clickOnCreateNewProject(){
+        log.info("Click on the 'Create new project' button");
+        waitVisibilityOfElement(createNewProjectButton).click();
+        AllureUtils.takeScreenshot(driver);
+    }
 }

@@ -20,8 +20,17 @@ public class LoginPageTest extends BaseTest {
         User user = new User();
         String expectedMainPageTitle = "Projects";
         String actualMainPageTitle = loginPageService
-                .login(user)
+                .loginValidCredentials(user)
                 .getPageTitleText();
         Assert.assertEquals(actualMainPageTitle, expectedMainPageTitle);
+    }
+
+    @Test
+    public void verifyUnsuccessfulAuthorizationInvalidCredentials() {
+        User user = new User("email@email.con", "password");
+        boolean isLoginErrorMessageDisplays = loginPageService
+                .loginInvalidCredentials(user)
+                .isLoginErrorMessageDisplays();
+        Assert.assertTrue(isLoginErrorMessageDisplays);
     }
 }

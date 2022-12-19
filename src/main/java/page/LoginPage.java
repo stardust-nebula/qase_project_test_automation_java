@@ -18,6 +18,9 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//button[@id='btnLogin']")
     private WebElement loginButton;
 
+    @FindBy(xpath = "//div[@data-qase-test='login-error']")
+    private WebElement loginErrorMessage;
+
     @Step("Open Login page")
     public LoginPage openPage(String url) {
         log.info("Open Login page by link: " + url);
@@ -27,7 +30,7 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Enter email in the 'email' field")
-    public LoginPage enterEmail(String emailValue){
+    public LoginPage enterEmail(String emailValue) {
         log.info("Enter email " + emailValue);
         waitVisibilityOfElement(emailField).clear();
         emailField.sendKeys(emailValue);
@@ -36,7 +39,7 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Enter password in the 'password' field")
-    public LoginPage enterPassword(String passwordValue){
+    public LoginPage enterPassword(String passwordValue) {
         log.info("Enter password " + passwordValue);
         waitVisibilityOfElement(passwordField).clear();
         passwordField.sendKeys(passwordValue);
@@ -45,9 +48,14 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Click on the 'Login' button")
-    public void clickLoginButton(){
+    public void clickLoginButton() {
         log.info("Click on 'Login' button");
         waitVisibilityOfElement(loginButton).click();
         AllureUtils.takeScreenshot(driver);
+    }
+
+    public boolean isLoginErrorMessageDisplays() {
+        log.info("Invalid credentials");
+        return waitVisibilityOfElement(loginErrorMessage).isDisplayed();
     }
 }
