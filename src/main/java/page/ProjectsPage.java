@@ -2,6 +2,8 @@ package page;
 
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import util.AllureUtils;
@@ -28,9 +30,46 @@ public class ProjectsPage extends BasePage {
     }
 
     @Step("Click on the 'Create new project' button")
-    public void clickOnCreateNewProject(){
+    public void clickOnCreateNewProject() {
         log.info("Click on the 'Create new project' button");
         waitVisibilityOfElement(createNewProjectButton).click();
         AllureUtils.takeScreenshot(driver);
+    }
+
+    public boolean isProjectByNamePresentOnPage(String projectName) {
+        log.info("Check project by name is shown on the Projects page");
+        AllureUtils.takeScreenshot(driver);
+        boolean isProjectByNamePresent = true;
+        try {
+            driver.findElement(getProjectNameInTableElement(projectName));
+        } catch (NoSuchElementException e) {
+            isProjectByNamePresent = false;
+        }
+        return isProjectByNamePresent;
+    }
+
+    @Step("Open 'Projects' page")
+    public ProjectsPage openProjectsPage(String url) {
+        log.info("Open Projects page");
+        driver.get(url);
+        AllureUtils.takeScreenshot(driver);
+        return this;
+    }
+
+    public ProjectsPage enterSearchCriteriaInSearchField(String searchCriteria) {
+        log.info("Search project by search criteria: " + searchCriteria);
+        waitVisibilityOfElement(searchInputField).sendKeys(searchCriteria);
+        return this;
+    }
+
+    @Step("Click on the project name in the table to open repository page")
+    public void clickOnProjectNameInTable(String projectName) {
+        log.info("Click on the project name in the table to open repository page");
+        driver.findElement(getProjectNameInTableElement(projectName)).click();
+        AllureUtils.takeScreenshot(driver);
+    }
+
+    private By getProjectNameInTableElement(String projectName) {
+        return By.xpath(String.format(projectNameInTheListPath, projectName));
     }
 }
