@@ -1,5 +1,6 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.*;
 
 @Data
@@ -8,9 +9,17 @@ import lombok.*;
 @Builder
 public class Project {
 
+    @SerializedName("title")
     private String projectName;
+
+    @SerializedName("code")
     private String projectCode;
     private String description;
+
+    @SerializedName("access")
     private String accessType;
+
+    @SerializedName("group")
+    private String accessGroup;
 
 }
