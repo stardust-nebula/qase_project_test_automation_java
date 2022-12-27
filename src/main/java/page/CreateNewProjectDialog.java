@@ -70,7 +70,7 @@ public class CreateNewProjectDialog extends BasePage {
     public CreateNewProjectDialog chooseProjectAccessType(String accessType) {
         if (accessType != null) {
             log.info("Choose project access type");
-            By accessTypeRadioButton = By.xpath(String.format(projectAccessTypeRadioButtonPath, accessType.toLowerCase()));
+            By accessTypeRadioButton = getElementLocatorByPathAndOneParam(projectAccessTypeRadioButtonPath, accessType.toLowerCase());
             waitVisibilityOfElement(driver.findElement(accessTypeRadioButton)).click();
         } else {
             log.info("Project access type left default");

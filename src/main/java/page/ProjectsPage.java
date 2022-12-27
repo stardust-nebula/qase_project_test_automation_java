@@ -2,7 +2,6 @@ package page;
 
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,6 +12,7 @@ public class ProjectsPage extends BasePage {
 
     private String projectNameInTheListPath = "//a[@class='defect-title' and contains(text(),'%s')]";
     private String projectsContextMenuIconPath = "//a[@class='defect-title' and contains(text(),'%s')]/ancestor::tr//a[@data-bs-toggle='dropdown']";
+    private String settingsOptionInContextMenuPath = "//a[@class='defect-title' and contains(text(),'%s')]/ancestor::tr//div[@class='dropdown-item']/a[contains(text(),'Settings')]";
 
     @FindBy(xpath = "//h1[contains(text(),'Projects')]")
     private WebElement projectsPageTitle;
@@ -39,13 +39,12 @@ public class ProjectsPage extends BasePage {
     public boolean isProjectByNamePresentOnPage(String projectName) {
         log.info("Check project by name is shown on the Projects page");
         AllureUtils.takeScreenshot(driver);
-        boolean isProjectByNamePresent = true;
         try {
-            driver.findElement(getProjectNameInTableElement(projectName));
+            driver.findElement(getElementLocatorByPathAndOneParam(projectNameInTheListPath, projectName));
+            return true;
         } catch (NoSuchElementException e) {
-            isProjectByNamePresent = false;
+            return false;
         }
-        return isProjectByNamePresent;
     }
 
     @Step("Open 'Projects' page")
@@ -65,11 +64,19 @@ public class ProjectsPage extends BasePage {
     @Step("Click on the project name in the table to open repository page")
     public void clickOnProjectNameInTable(String projectName) {
         log.info("Click on the project name in the table to open repository page");
-        driver.findElement(getProjectNameInTableElement(projectName)).click();
+        driver.findElement(getElementLocatorByPathAndOneParam(projectNameInTheListPath, projectName)).click();
         AllureUtils.takeScreenshot(driver);
     }
 
-    private By getProjectNameInTableElement(String projectName) {
-        return By.xpath(String.format(projectNameInTheListPath, projectName));
+    @Step("Click on the meatballs icon for the selected project")
+    public ProjectsPage clickOnMeatballsIconForProjectByName(String projectName) {
+        log.info("Click on the meatballs icon for the selected project");
+        driver.findElement(getElementLocatorByPathAndOneParam(projectsContextMenuIconPath, projectName)).click();
+        return new ProjectsPage();
+    }
+
+    @Step("Click on the 'Settings' option in the context menu for a specific Project")
+    public void clickOnSettingsOptionByProject(String projectName) {
+        driver.findElement(getElementLocatorByPathAndOneParam(settingsOptionInContextMenuPath, projectName)).click();
     }
 }

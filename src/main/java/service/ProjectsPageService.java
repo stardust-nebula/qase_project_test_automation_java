@@ -3,6 +3,9 @@ package service;
 import lombok.extern.log4j.Log4j2;
 import page.ProjectsPage;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static util.StringConstant.PROJECTS_PAGE_URL;
 
 @Log4j2
@@ -26,9 +29,19 @@ public class ProjectsPageService {
         return projectsPage.enterSearchCriteriaInSearchField(searchCriteria);
     }
 
+    public ProjectsPage clickOnMeatballsIconForProjectByName(String projectName) {
+        return projectsPage.clickOnMeatballsIconForProjectByName(projectName);
+    }
+
     public void clickOnProjectNameInTable(String projectName) {
         projectsPage.clickOnProjectNameInTable(projectName);
     }
+
+    public void clickOnSettingsOptionByProject(String projectName) {
+        projectsPage.clickOnSettingsOptionByProject(projectName);
+    }
+
+
 
 
 }

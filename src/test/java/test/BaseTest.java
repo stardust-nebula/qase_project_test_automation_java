@@ -16,9 +16,9 @@ public class BaseTest {
         driver = DriverSingleton.getDriver();
     }
 
-    @AfterClass(alwaysRun = true, description = "Closing browser")
-    public void closeBrowser() {
-        log.info("Closing browser");
-        DriverSingleton.closeBrowser();
-    }
+//    @AfterClass(alwaysRun = true, description = "Closing browser")
+//    public void closeBrowser() {
+//        log.info("Closing browser");
+//        DriverSingleton.closeBrowser();
+//    }
 }

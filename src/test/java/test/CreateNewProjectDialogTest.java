@@ -11,19 +11,14 @@ import service.LoginPageService;
 import service.ProjectRepositoryPageService;
 import service.ProjectsPageService;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class CreateNewProjectDialogTest extends BaseTest {
-    private static int prefixProjectNameLength = 5;
-    private static int prefixProjectCodeLength = 3;
-    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-
+    private static final int prefixProjectNameLength = 5;
+    private static final int prefixProjectCodeLength = 3;
     private LoginPageService loginPageService;
     private ProjectsPageService projectsPageService;
     private CreateNewProjectService createNewProjectService;
     private ProjectRepositoryPageService projectRepositoryPageService;
-    private static User user = new User();
+    private static final User user = new User();
 
     @BeforeClass
     public void setUp() {
@@ -45,11 +40,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
 
     @Test
     public void verifySuccessfulCreatingNewProject() {
-        Date date = new Date(System.currentTimeMillis());
-        String dateForName = simpleDateFormat.format(date);
-        String prefixProjectName = createNewProjectService.generateRandomString(prefixProjectNameLength);
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
-        String projectName = prefixProjectName + " current date" + dateForName;
+        String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         Project project = Project.builder()
                 .projectName(projectName)
                 .projectCode(projectCode)
@@ -63,11 +55,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
     @Test
     public void cancelCreationOfNewProject() {
         String expectedProjectsPageTitle = "Projects";
-        Date date = new Date(System.currentTimeMillis());
-        String dateForName = simpleDateFormat.format(date);
-        String prefixProjectName = createNewProjectService.generateRandomString(prefixProjectNameLength);
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
-        String projectName = prefixProjectName + " current date" + dateForName;
+        String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         Project project = Project.builder()
                 .projectName(projectName)
                 .projectCode(projectCode)

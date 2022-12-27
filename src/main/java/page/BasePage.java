@@ -1,6 +1,7 @@
 package page;
 
 import driver.DriverSingleton;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -24,5 +25,9 @@ public abstract class BasePage {
 
     protected WebElement waitElementToBeClickable(WebElement element) {
         return new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT_TIMEOUT_SECONDS)).until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    protected By getElementLocatorByPathAndOneParam(String path, String paramText) {
+        return By.xpath(String.format(path, paramText));
     }
 }

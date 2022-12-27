@@ -44,40 +44,32 @@ public class ProjectRepositoryPage extends BasePage {
     public boolean isSuiteByNamePresent(String suiteName) {
         log.info("Check suite by name is shown on the Repository page");
         AllureUtils.takeScreenshot(driver);
-//        boolean isSuitePresent = true;
-        By suiteNameInListElement = getElementLocator(suitePath, suiteName);
+        By suiteNameInListElement = getElementLocatorByPathAndOneParam(suitePath, suiteName);
         try {
             driver.findElement(suiteNameInListElement).isDisplayed();
             return true;
         } catch (NoSuchElementException e) {
             return false;
         }
-//        return isSuitePresent;
     }
 
     public void clickOnSuiteNameInList(String suiteName) {
         log.info("Click on the suite name in the list of suites: " + suiteName);
-        By suiteNameInListElement = getElementLocator(suitePath, suiteName);
+        By suiteNameInListElement = getElementLocatorByPathAndOneParam(suitePath, suiteName);
         driver.findElement(suiteNameInListElement).click();
         AllureUtils.takeScreenshot(driver);
     }
 
     public boolean isAlertOnTestCaseCreatedSuccessfullyAppears() {
         log.info("Check if Alert pop-up appears on successful test case creation");
-        By alertElement = getElementLocator(alertPopupPath, testCaseCreatedSuccessfullyText);
+        By alertElement = getElementLocatorByPathAndOneParam(alertPopupPath, testCaseCreatedSuccessfullyText);
         boolean isAlertAppears = driver.findElement(alertElement).isDisplayed();
         AllureUtils.takeScreenshot(driver);
         return isAlertAppears;
     }
 
-    public String getTextFromCreateTestCaseSuccessAlert(){
-        By alertElement = getElementLocator(alertPopupPath, testCaseCreatedSuccessfullyText);
+    public String getTextFromCreateTestCaseSuccessAlert() {
+        By alertElement = getElementLocatorByPathAndOneParam(alertPopupPath, testCaseCreatedSuccessfullyText);
         return driver.findElement(alertElement).getText();
     }
-
-    private By getElementLocator(String path, String paramText) {
-        return By.xpath(String.format(path, paramText));
-    }
-
-
 }
