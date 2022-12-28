@@ -24,7 +24,8 @@ public class ProjectsPageTest extends BaseTest {
         createNewProjectService = new CreateNewProjectService();
     }
 
-    @Test(testName = "Verify successful searching for existing project")
+    @Test(testName = "Successful searching for existing project",
+            description = "Verify successful searching for existing project")
     public void verifySuccessfulSearchExistingProjectTest() {
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
@@ -40,7 +41,8 @@ public class ProjectsPageTest extends BaseTest {
         Assert.assertTrue(isProjectLocated);
     }
 
-    @Test(testName = "Verify project is no more shown on the Projects page after deleting")
+    @Test(testName = "Project is no more shown on the Projects page after deleting",
+            description = "Verify project is no more shown on the Projects page after deleting")
     public void verifyProjectNotShownAfterDeletingTest() {
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);

@@ -34,20 +34,23 @@ public class ApiTest {
                 .build();
     }
 
-    @Test(testName = "Verify Status Code = 200 on getting all projects")
+    @Test(testName = "Status Code = 200 on getting all projects",
+            description = "Verify Status Code = 200 on getting all projects")
     public void getAllProjectsTest() {
         int statusCode = new ProjectApiService().getAllProjects().statusCode();
         Assert.assertEquals(statusCode, HTTP_OK);
     }
 
-    @Test(testName = "Verify project's code once project is created")
+    @Test(testName = "project's code once project is created",
+            description = "Verify project's code once project is created")
     public void createNewProjectTest() {
         String pathToCodeInResponse = "result.code";
         String actualCode = new ProjectApiService().createProject(project).body().path(pathToCodeInResponse);
         Assert.assertEquals(actualCode, projectCode);
     }
 
-    @Test(testName = "Verify getting 'true' status on successful creating new suite")
+    @Test(testName = "Verify getting 'true' status on successful creating new suite",
+            description = "Verify getting 'true' status on successful creating new suite")
     public void createNewSuiteTest() {
         String suiteName = "Regression";
         String pathToStatusInResponse = "status";
@@ -59,7 +62,8 @@ public class ApiTest {
         Assert.assertTrue(status);
     }
 
-    @Test(testName = "Verify success status on successful changing suite's description")
+    @Test(testName = "Success status on successful changing suite's description",
+            description = "Verify success status on successful changing suite's description")
     public void verifySuccessfulUpdatingSuiteDescriptionTest() {
         String suiteName = "Smoke Test Suite";
         String newSuiteDescription = " New description for the suite";
@@ -77,7 +81,8 @@ public class ApiTest {
         Assert.assertTrue(status);
     }
 
-    @Test(testName = "Verify Status code = 404 on second try deleting previously existed test case")
+    @Test(testName = "Status code = 404 on second try deleting previously existed test case",
+            description = "Verify Status code = 404 on second try deleting previously existed test case")
     public void verifyStatusCodeOnSecondDeletingTestCaseTest() {
         String testCaseIdPathInResponse = "result.id";
         String testCaseErrorMessagePathInResponse = "errorMessage";

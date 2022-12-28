@@ -24,7 +24,7 @@ public class CreateTestCasePageTest extends BaseTest {
         createTestCasePageService = new CreateTestCasePageService();
     }
 
-    @Test(testName = "Verify that alert on successful test case creation")
+    @Test(testName = "Alert on successful test case creation", description = "Verify that alert on successful test case creation")
     public void verifyAlertOnSuccessfulCreationOfTestCaseTest() {
         String expectedSuccessMessage = "Test case was created successfully!";
         String testCaseTitle = "Login with valid credentials";

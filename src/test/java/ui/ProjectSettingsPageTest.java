@@ -22,7 +22,8 @@ public class ProjectSettingsPageTest extends BaseTest {
         projectSettingsPageService = new ProjectSettingsPageService();
     }
 
-    @Test(testName = "Verify success alert appears on successful changing project's description")
+    @Test(testName = "Success alert appears on successful changing project's description",
+            description = "Verify success alert appears on successful changing project's description")
     public void verifySuccessAlertOnChangingProjectDescriptionTest() {
         String newDescription = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.";
         String expectedSuccessText = "Project settings were successfully updated!";

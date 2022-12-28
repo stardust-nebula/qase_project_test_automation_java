@@ -34,7 +34,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
         projectsPageService.openProjectsPage();
     }
 
-    @Test(testName = "Verify than Member Access Component is not shown when Public Project Access Type is selected")
+    @Test(testName = "Member Access Component is not shown when Public Project Access Type is selected",
+    description = "Verify than Member Access Component is not shown when Public Project Access Type is selected")
     public void verifyMemberAccessComponentNotShownWhenPublicProjectAccessTypeTest() {
         String projectAccessType = "Public";
         createNewProjectService
@@ -43,7 +44,7 @@ public class CreateNewProjectDialogTest extends BaseTest {
         Assert.assertFalse(createNewProjectService.isMemberAccessComponentVisible(), "Member Access component is visible");
     }
 
-    @Test(testName = "Verify successful creation of New Project")
+    @Test(testName = "Successful creation of New Project", description = "Verify successful creation of New Project")
     public void verifySuccessfulCreatingNewProjectTest() {
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
@@ -57,7 +58,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
         Assert.assertTrue(actualPageTitle.contains(projectCode));
     }
 
-    @Test(testName = "Verify successful canceling on creating a New Project")
+    @Test(testName = "Successful canceling on creating a New Project",
+            description = "Verify successful canceling on creating a New Project")
     public void verifySuccessfulCancelingOnCreationNewProjectTest() {
         String expectedProjectsPageTitle = "Projects";
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();

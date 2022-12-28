@@ -18,7 +18,7 @@ public class LoginPageTest extends BaseTest {
         headerGlobalComponentService = new HeaderGlobalComponentService();
     }
 
-    @Test(testName = "Verify successful authorization with valid credentials")
+    @Test(testName = "Successful authorization with valid credentials", description = "Verify successful authorization with valid credentials")
     public void verifySuccessfulAuthorizationValidCredentialsTest() {
         User user = new User();
         String expectedMainPageTitle = "Projects";
@@ -29,7 +29,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertEquals(actualMainPageTitle, expectedMainPageTitle);
     }
 
-    @Test(testName = "Verify unsuccessful authorization with invalid credentials")
+    @Test(testName = "Unsuccessful authorization with invalid credentials", description = "Verify unsuccessful authorization with invalid credentials")
     public void verifyUnsuccessfulAuthorizationInvalidCredentialsTest() {
         User user = new User("email@email.con", "password");
         boolean isLoginErrorMessageDisplays = loginPageService

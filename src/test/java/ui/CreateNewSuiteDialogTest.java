@@ -28,7 +28,7 @@ public class CreateNewSuiteDialogTest extends BaseTest {
         createNewSuiteDialogService = new CreateNewSuiteDialogService();
     }
 
-    @Test(testName = "Verify successful creation of a New Suite")
+    @Test(testName = "Successful creation of a New Suite", description = "Verify successful creation of a New Suite")
     public void verifySuccessfulNewSuiteCreationTest() {
         String suiteName = "Regression";
         Suite suite = Suite.builder()
