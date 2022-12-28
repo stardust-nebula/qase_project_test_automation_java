@@ -55,6 +55,6 @@ public class ProjectsPageTest extends BaseTest {
         createNewProjectService.fillInProjectInfoCreate(project);
         projectsPageService.openProjectsPage();
         boolean isProjectDisplaysInTable = projectsPageService.isProjectByNamePresentOnPage(projectName);
-        Assert.assertTrue(isProjectDisplaysInTable, "Project is shown on the page: '" + projectName + "'");
+        Assert.assertFalse(isProjectDisplaysInTable, "Project is shown on the page: '" + projectName + "'");
     }
 }

@@ -38,13 +38,15 @@ public class ProjectsPage extends BasePage {
 
     public boolean isProjectByNamePresentOnPage(String projectName) {
         log.info("Check project by name is shown on the Projects page");
-        AllureUtils.takeScreenshot(driver);
+        boolean isProjectShownOnPage;
         try {
             driver.findElement(getElementLocatorByPathAndOneParam(projectNameInTheListPath, projectName));
-            return true;
+            isProjectShownOnPage = true;
         } catch (NoSuchElementException e) {
-            return false;
+            isProjectShownOnPage = false;
         }
+        AllureUtils.takeScreenshot(driver);
+        return isProjectShownOnPage;
     }
 
     @Step("Open 'Projects' page")
