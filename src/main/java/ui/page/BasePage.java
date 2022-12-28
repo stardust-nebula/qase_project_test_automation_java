@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static ui.util.WaitTimeout.EXPLICIT_WAIT_TIMEOUT_SECONDS;
+import static ui.util.WaitTimeout.EXPLICIT_WAIT_TIMEOUT_TO_BE_CLICKABLE_SECONDS;
 
 public abstract class BasePage {
 
@@ -25,7 +26,7 @@ public abstract class BasePage {
     }
 
     protected WebElement waitElementToBeClickable(WebElement element) {
-        return new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT_TIMEOUT_SECONDS)).until(ExpectedConditions.elementToBeClickable(element));
+        return new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT_TIMEOUT_TO_BE_CLICKABLE_SECONDS)).until(ExpectedConditions.elementToBeClickable(element));
     }
 
     protected By getElementLocatorByPathAndOneParam(String path, String paramText) {
