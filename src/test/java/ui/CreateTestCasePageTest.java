@@ -1,6 +1,5 @@
 package ui;
 
-import model.Project;
 import model.TestCase;
 import model.User;
 import org.testng.annotations.BeforeClass;
@@ -14,8 +13,6 @@ import ui.service.ProjectsPageService;
 public class CreateTestCasePageTest extends BaseTest {
 
     private static final String demoProjectName = "Demo Project";
-    private static final String demoProjectCode = "DEMO";
-    private static Project project;
     private ProjectRepositoryPageService projectRepositoryPageService;
     private CreateTestCasePageService createTestCasePageService;
 
@@ -26,11 +23,10 @@ public class CreateTestCasePageTest extends BaseTest {
         new ProjectsPageService().clickOnProjectNameInTable(demoProjectName);
         projectRepositoryPageService = new ProjectRepositoryPageService();
         createTestCasePageService = new CreateTestCasePageService();
-        project = Project.builder().projectName(demoProjectName).projectCode(demoProjectCode).build();
     }
 
-    @Test
-    public void verifyAlertOnSuccessfulCreationOfTestCase(){
+    @Test(testName = "Verify that alert on successful test case creation")
+    public void verifyAlertOnSuccessfulCreationOfTestCaseTest() {
         String expectedSuccessMessage = "Test case was created successfully!";
         String testCaseTitle = "Login with valid credentials";
         TestCase testCase = TestCase.builder()
@@ -46,5 +42,4 @@ public class CreateTestCasePageTest extends BaseTest {
         softAssert.assertEquals(actualText, expectedSuccessMessage);
         softAssert.assertAll();
     }
-
 }

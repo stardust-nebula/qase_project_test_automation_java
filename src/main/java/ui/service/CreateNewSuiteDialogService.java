@@ -29,6 +29,4 @@ public class CreateNewSuiteDialogService {
                 .clickCreateButton();
         return new ProjectRepositoryPage();
     }
-
-
 }

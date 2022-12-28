@@ -33,12 +33,4 @@ public class ProjectsPageService {
     public void clickOnProjectNameInTable(String projectName) {
         projectsPage.clickOnProjectNameInTable(projectName);
     }
-
-    public void clickOnSettingsOptionByProject(String projectName) {
-        projectsPage.clickOnSettingsOptionByProject(projectName);
-    }
-
-
-
-
 }

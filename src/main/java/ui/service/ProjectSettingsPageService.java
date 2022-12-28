@@ -6,15 +6,6 @@ import ui.page.ProjectSettingsPage;
 public class ProjectSettingsPageService {
 
     private ProjectSettingsPage projectSettingsPage = new ProjectSettingsPage();
-    private ProjectsPageService projectsPageService = new ProjectsPageService();
-
-    @Step("Open Project settings page by project name")
-    public ProjectSettingsPage openProjectSettingsPageByProjectName(String projectName) {
-        projectsPageService
-                .clickOnMeatballsIconForProjectByName(projectName)
-                .clickOnSettingsOptionByProject(projectName);
-        return new ProjectSettingsPage();
-    }
 
     @Step("Change Project information and save")
     public ProjectSettingsPage changeProjectSettingsAndSave(String newDescription) {

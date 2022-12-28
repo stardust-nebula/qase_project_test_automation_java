@@ -18,5 +18,4 @@ public class CreateTestCasePageService {
                 .clickOnSaveButton();
         return new ProjectRepositoryPage();
     }
-
 }

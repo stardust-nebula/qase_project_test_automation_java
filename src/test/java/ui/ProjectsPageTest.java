@@ -11,22 +11,20 @@ import ui.service.ProjectsPageService;
 
 public class ProjectsPageTest extends BaseTest {
 
-    private LoginPageService loginPageService;
     private ProjectsPageService projectsPageService;
     private CreateNewProjectService createNewProjectService;
-    private static final User user = new User();
     private static int prefixProjectNameLength = 5;
     private static int prefixProjectCodeLength = 3;
 
     @BeforeClass
     public void setUp() {
-        loginPageService = new LoginPageService();
+        User user = new User();
+        new LoginPageService().loginValidCredentials(user);
         projectsPageService = new ProjectsPageService();
         createNewProjectService = new CreateNewProjectService();
-        loginPageService.loginValidCredentials(user);
     }
 
-    @Test
+    @Test(testName = "Verify successful searching for existing project")
     public void verifySuccessfulSearchExistingProjectTest() {
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
@@ -43,7 +41,7 @@ public class ProjectsPageTest extends BaseTest {
     }
 
     @Test(testName = "Verify project is no more shown on the Projects page after deleting")
-    public void verifyProjectNotShownAfterDeleting() {
+    public void verifyProjectNotShownAfterDeletingTest() {
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         Project project = Project.builder()

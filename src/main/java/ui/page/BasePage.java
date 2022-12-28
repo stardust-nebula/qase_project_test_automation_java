@@ -13,7 +13,8 @@ import java.time.Duration;
 import static ui.util.WaitTimeout.EXPLICIT_WAIT_TIMEOUT_SECONDS;
 
 public abstract class BasePage {
-    protected WebDriver driver = DriverSingleton.getDriver();
+
+    protected WebDriver driver = DriverSingleton.getInstance().getDriver();
 
     protected BasePage() {
         PageFactory.initElements(driver, this);

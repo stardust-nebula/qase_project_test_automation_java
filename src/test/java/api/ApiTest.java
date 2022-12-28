@@ -18,18 +18,15 @@ import static java.net.HttpURLConnection.HTTP_OK;
 
 public class ApiTest {
 
-    private CreateNewProjectService createNewProjectService;
     private static final int prefixProjectCodeLength = 3;
     private static final int prefixProjectNameLength = 5;
-
     private String projectCode;
-    private String projectName;
     private Project project;
 
     @BeforeClass
     public void setUpData() {
-        createNewProjectService = new CreateNewProjectService();
-        projectName = "Automation QA API " + createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
+        CreateNewProjectService createNewProjectService = new CreateNewProjectService();
+        String projectName = "Automation QA API " + createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
         project = Project.builder()
                 .projectName(projectName)
@@ -81,7 +78,7 @@ public class ApiTest {
     }
 
     @Test(testName = "Verify Status code = 404 on second try deleting previously existed test case")
-    public void verifyStatusCodeOnSecondDeletingTestCaseTes() {
+    public void verifyStatusCodeOnSecondDeletingTestCaseTest() {
         String testCaseIdPathInResponse = "result.id";
         String testCaseErrorMessagePathInResponse = "errorMessage";
         String testCaseName = "Test to check second deleting";
@@ -100,5 +97,4 @@ public class ApiTest {
         softAssert.assertEquals(actualErrorMessage, expectedErrorMessage, "Error message doesn't match");
         softAssert.assertAll();
     }
-
 }

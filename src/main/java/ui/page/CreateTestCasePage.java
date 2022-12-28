@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import ui.util.AllureUtils;
 
 @Log4j2
-public class CreateTestCasePage extends BasePage{
+public class CreateTestCasePage extends BasePage {
 
     @FindBy(xpath = "//input[@id='title']")
     private WebElement titleField;
@@ -15,10 +15,8 @@ public class CreateTestCasePage extends BasePage{
     @FindBy(xpath = "//button[@id='save-case']")
     private WebElement saveButton;
 
-    private ProjectRepositoryPage projectRepositoryPage = new ProjectRepositoryPage();
-
     @Step("Enter title for a new test case")
-    public CreateTestCasePage enterTestCaseTitle(String testCaseTitle){
+    public CreateTestCasePage enterTestCaseTitle(String testCaseTitle) {
         log.info("Enter title for a new test case");
         waitVisibilityOfElement(titleField).clear();
         titleField.sendKeys(testCaseTitle);
@@ -27,18 +25,9 @@ public class CreateTestCasePage extends BasePage{
     }
 
     @Step("Click on the 'Save' button to save a new test case")
-    public void clickOnSaveButton(){
+    public void clickOnSaveButton() {
         log.info("Click on the 'Save' button to save a new test case");
         waitVisibilityOfElement(saveButton).click();
         AllureUtils.takeScreenshot(driver);
     }
-
-    @Step("Open 'Create test case' page")
-    public CreateTestCasePage openCreateTestCasePage(){
-        log.info("Open 'Create test case' page");
-        projectRepositoryPage.clickOnAddCaseButton();
-        AllureUtils.takeScreenshot(driver);
-        return new CreateTestCasePage();
-    }
-
 }

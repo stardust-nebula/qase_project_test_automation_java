@@ -8,13 +8,13 @@ import ui.service.LoginPageService;
 import ui.service.ProjectSettingsPageService;
 import ui.service.ProjectsPageService;
 
-public class ProjectSettingsPageTest extends BaseTest{
+public class ProjectSettingsPageTest extends BaseTest {
 
-    private static final String demoProjectName = "Demo Project";
     private ProjectSettingsPageService projectSettingsPageService;
 
     @BeforeClass
     public void setUp() {
+        String demoProjectName = "Demo Project";
         new LoginPageService().loginValidCredentials(new User());
         new ProjectsPageService()
                 .clickOnMeatballsIconForProjectByName(demoProjectName)
@@ -23,7 +23,7 @@ public class ProjectSettingsPageTest extends BaseTest{
     }
 
     @Test(testName = "Verify success alert appears on successful changing project's description")
-    public void verifySuccessAlertOnChangingProjectDescription(){
+    public void verifySuccessAlertOnChangingProjectDescriptionTest() {
         String newDescription = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.";
         String expectedSuccessText = "Project settings were successfully updated!";
         projectSettingsPageService.changeProjectSettingsAndSave(newDescription);

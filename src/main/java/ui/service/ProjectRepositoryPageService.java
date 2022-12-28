@@ -24,15 +24,15 @@ public class ProjectRepositoryPageService {
         return projectRepositoryPage.isSuiteByNamePresent(suiteName);
     }
 
-    public void clickOnSuiteNameInTheList(String suiteName){
+    public void clickOnSuiteNameInTheList(String suiteName) {
         projectRepositoryPage.clickOnSuiteNameInList(suiteName);
     }
 
-    public boolean isAlertOnTestCaseCreatedSuccessfullyAppears(){
+    public boolean isAlertOnTestCaseCreatedSuccessfullyAppears() {
         return projectRepositoryPage.isAlertOnTestCaseCreatedSuccessfullyAppears();
     }
 
-    public String getTextFromCreateTestCaseSuccessAlert(){
+    public String getTextFromCreateTestCaseSuccessAlert() {
         return projectRepositoryPage.getTextFromCreateTestCaseSuccessAlert();
     }
 }

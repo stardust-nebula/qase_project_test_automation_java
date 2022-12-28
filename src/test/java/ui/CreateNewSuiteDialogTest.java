@@ -16,24 +16,19 @@ public class CreateNewSuiteDialogTest extends BaseTest {
     private static int prefixProjectNameLength = 5;
     private static int prefixProjectCodeLength = 3;
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-    private LoginPageService loginPageService;
-    private ProjectsPageService projectsPageService;
     private CreateNewProjectService createNewProjectService;
     private ProjectRepositoryPageService projectRepositoryPageService;
     private CreateNewSuiteDialogService createNewSuiteDialogService;
-    private static User user = new User();
-
     @BeforeClass
     public void setUp() {
-        loginPageService = new LoginPageService();
-        projectsPageService = new ProjectsPageService();
+        User user = new User();
+        new LoginPageService().loginValidCredentials(user);
         createNewProjectService = new CreateNewProjectService();
         projectRepositoryPageService = new ProjectRepositoryPageService();
         createNewSuiteDialogService = new CreateNewSuiteDialogService();
-        loginPageService.loginValidCredentials(user);
     }
 
-    @Test
+    @Test(testName = "Verify successful creation of a New Suite")
     public void verifySuccessfulNewSuiteCreationTest() {
         String suiteName = "Regression";
         Suite suite = Suite.builder()
@@ -54,6 +49,4 @@ public class CreateNewSuiteDialogTest extends BaseTest {
         createNewSuiteDialogService.fillSuiteDataCreate(suite);
         Assert.assertTrue(projectRepositoryPageService.isSuiteByNamePresent(suiteName));
     }
-
-
 }

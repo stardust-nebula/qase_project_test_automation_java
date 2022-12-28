@@ -1,53 +1,33 @@
 package ui.driver;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
-
-import java.time.Duration;
-
-import static ui.util.WaitTimeout.IMPLICIT_WAIT_TIMEOUT_SECONDS;
 
 public class DriverSingleton {
-    private static WebDriver driver;
+
+    private static ThreadLocal<DriverSingleton> instance = new ThreadLocal<>();
+    private WebDriver driver;
 
     private DriverSingleton() {
+        driver = WebDriverFactory.getWebDriver();
     }
 
-    public static WebDriver getDriver() {
-        if (null == driver) {
-            switch (System.getProperty("browser", "chrome")) {
-                case "firefox": {
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    break;
-                }
-                case "safari": {
-                    WebDriverManager.safaridriver().setup();
-                    driver = new SafariDriver();
-                    break;
-                }
-                case "edge": {
-                    WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
-                    break;
-                }
-                default: {
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                }
-            }
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT_TIMEOUT_SECONDS));
+    public static synchronized DriverSingleton getInstance() {
+        if (instance.get() == null) {
+            instance.set(new DriverSingleton());
         }
+        return instance.get();
+    }
+
+    public WebDriver getDriver() {
         return driver;
     }
 
-    public static void closeBrowser() {
-        driver.quit();
-        driver = null;
+    public void closeBrowser() {
+        try {
+            driver.quit();
+            driver = null;
+        } finally {
+            instance.remove();
+        }
     }
 }

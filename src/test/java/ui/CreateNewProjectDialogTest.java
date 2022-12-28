@@ -14,7 +14,7 @@ import ui.service.ProjectsPageService;
 public class CreateNewProjectDialogTest extends BaseTest {
     private static final int prefixProjectNameLength = 5;
     private static final int prefixProjectCodeLength = 3;
-    private LoginPageService loginPageService;
+
     private ProjectsPageService projectsPageService;
     private CreateNewProjectService createNewProjectService;
     private ProjectRepositoryPageService projectRepositoryPageService;
@@ -22,15 +22,14 @@ public class CreateNewProjectDialogTest extends BaseTest {
 
     @BeforeClass
     public void setUp() {
-        loginPageService = new LoginPageService();
+        new LoginPageService().loginValidCredentials(user);
         projectsPageService = new ProjectsPageService();
         createNewProjectService = new CreateNewProjectService();
         projectRepositoryPageService = new ProjectRepositoryPageService();
-        loginPageService.loginValidCredentials(user);
     }
 
-    @Test
-    public void verifyMemberAccessComponentNotShownWhenPublicProjectAccessType() {
+    @Test(testName = "Verify than Member Access Component is not shown when Public Project Access Type is selected")
+    public void verifyMemberAccessComponentNotShownWhenPublicProjectAccessTypeTest() {
         String projectAccessType = "Public";
         createNewProjectService
                 .openCreateNewProjectDialog()
@@ -38,8 +37,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
         Assert.assertFalse(createNewProjectService.isMemberAccessComponentVisible(), "Member Access component is visible");
     }
 
-    @Test
-    public void verifySuccessfulCreatingNewProject() {
+    @Test(testName = "Verify successful creation of New Project")
+    public void verifySuccessfulCreatingNewProjectTest() {
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         Project project = Project.builder()
@@ -52,8 +51,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
         Assert.assertTrue(actualPageTitle.contains(projectCode));
     }
 
-    @Test
-    public void cancelCreationOfNewProject() {
+    @Test(testName = "Verify successful canceling on creating a New Project")
+    public void verifySuccessfulCancelingOnCreationNewProjectTest() {
         String expectedProjectsPageTitle = "Projects";
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
