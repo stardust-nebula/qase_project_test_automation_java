@@ -21,7 +21,7 @@ pipeline {
       stage('Testing') {
          steps {
             // Get some code from a GitHub repository
-            git branch: "${params.BRANCH}", url: 'https://github.com/stardust-nebula/hw2_6_saucedemo.git'
+            git branch: "${params.BRANCH}", url: 'https://github.com/stardust-nebula/qase_project.git'
 
             // Run Maven on a Unix agent.
             //sh "mvn clean test"
