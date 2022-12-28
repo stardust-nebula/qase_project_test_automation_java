@@ -1,5 +1,6 @@
 package ui;
 
+import api.util.GenerateNames;
 import model.Project;
 import model.User;
 import org.testng.Assert;
@@ -19,10 +20,10 @@ public class CreateNewProjectDialogTest extends BaseTest {
     private ProjectsPageService projectsPageService;
     private CreateNewProjectService createNewProjectService;
     private ProjectRepositoryPageService projectRepositoryPageService;
-    private static final User user = new User();
 
     @BeforeClass
     public void setUp() {
+        User user = new User();
         new LoginPageService().loginValidCredentials(user);
         projectsPageService = new ProjectsPageService();
         createNewProjectService = new CreateNewProjectService();
@@ -46,8 +47,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
 
     @Test(testName = "Successful creation of New Project", description = "Verify successful creation of New Project")
     public void verifySuccessfulCreatingNewProjectTest() {
-        String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
-        String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
+        String projectCode = GenerateNames.generateRandomString(prefixProjectCodeLength).toUpperCase();
+        String projectName = GenerateNames.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         Project project = Project.builder()
                 .projectName(projectName)
                 .projectCode(projectCode)
@@ -62,8 +63,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
             description = "Verify successful canceling on creating a New Project")
     public void verifySuccessfulCancelingOnCreationNewProjectTest() {
         String expectedProjectsPageTitle = "Projects";
-        String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
-        String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
+        String projectCode = GenerateNames.generateRandomString(prefixProjectCodeLength).toUpperCase();
+        String projectName = GenerateNames.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         Project project = Project.builder()
                 .projectName(projectName)
                 .projectCode(projectCode)

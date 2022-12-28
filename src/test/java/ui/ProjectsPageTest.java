@@ -1,5 +1,6 @@
 package ui;
 
+import api.util.GenerateNames;
 import model.Project;
 import model.User;
 import org.testng.Assert;
@@ -27,8 +28,8 @@ public class ProjectsPageTest extends BaseTest {
     @Test(testName = "Successful searching for existing project",
             description = "Verify successful searching for existing project")
     public void verifySuccessfulSearchExistingProjectTest() {
-        String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
-        String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
+        String projectCode = GenerateNames.generateRandomString(prefixProjectCodeLength).toUpperCase();
+        String projectName = GenerateNames.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         Project project = Project.builder()
                 .projectName(projectName)
                 .projectCode(projectCode)
@@ -44,8 +45,8 @@ public class ProjectsPageTest extends BaseTest {
     @Test(testName = "Project is no more shown on the Projects page after deleting",
             description = "Verify project is no more shown on the Projects page after deleting")
     public void verifyProjectNotShownAfterDeletingTest() {
-        String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
-        String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
+        String projectCode = GenerateNames.generateRandomString(prefixProjectCodeLength).toUpperCase();
+        String projectName = GenerateNames.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         Project project = Project.builder()
                 .projectName(projectName)
                 .projectCode(projectCode)

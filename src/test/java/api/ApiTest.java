@@ -1,5 +1,6 @@
 package api;
 
+import api.util.GenerateNames;
 import api.service.ProjectApiService;
 import api.service.SuiteApiService;
 import api.service.TestCaseApiService;
@@ -26,8 +27,8 @@ public class ApiTest {
     @BeforeClass
     public void setUpData() {
         CreateNewProjectService createNewProjectService = new CreateNewProjectService();
-        String projectName = "Automation QA API " + createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
-        projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
+        String projectName = "Automation QA API " + GenerateNames.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
+        projectCode = GenerateNames.generateRandomString(prefixProjectCodeLength).toUpperCase();
         project = Project.builder()
                 .projectName(projectName)
                 .projectCode(projectCode)

@@ -1,24 +1,25 @@
 package ui;
 
+import api.util.GenerateNames;
 import model.Project;
 import model.Suite;
 import model.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import ui.service.*;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import ui.service.CreateNewProjectService;
+import ui.service.CreateNewSuiteDialogService;
+import ui.service.LoginPageService;
+import ui.service.ProjectRepositoryPageService;
 
 public class CreateNewSuiteDialogTest extends BaseTest {
 
     private static int prefixProjectNameLength = 5;
     private static int prefixProjectCodeLength = 3;
-    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
     private CreateNewProjectService createNewProjectService;
     private ProjectRepositoryPageService projectRepositoryPageService;
     private CreateNewSuiteDialogService createNewSuiteDialogService;
+
     @BeforeClass
     public void setUp() {
         User user = new User();
@@ -34,11 +35,8 @@ public class CreateNewSuiteDialogTest extends BaseTest {
         Suite suite = Suite.builder()
                 .suiteName(suiteName)
                 .build();
-        Date date = new Date(System.currentTimeMillis());
-        String dateForName = simpleDateFormat.format(date);
-        String prefixProjectName = createNewProjectService.generateRandomString(prefixProjectNameLength);
-        String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
-        String projectName = prefixProjectName + " current date" + dateForName;
+        String projectCode = GenerateNames.generateRandomString(prefixProjectCodeLength).toUpperCase();
+        String projectName = GenerateNames.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         Project project = Project.builder()
                 .projectName(projectName)
                 .projectCode(projectCode)

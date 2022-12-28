@@ -1,5 +1,6 @@
 package ui.service;
 
+import api.util.GenerateNames;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import model.Project;
@@ -58,15 +59,17 @@ public class CreateNewProjectService {
         return createNewProjectDialog.isMemberAccessComponentVisible();
     }
 
-    public String generateRandomString(int length) {
-        return RandomStringUtils.randomAlphabetic(length);
-    }
 
-    public String generateTestProjectNameWithCurrentDate(int prefixProjectNameLength) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-        Date date = new Date(System.currentTimeMillis());
-        String dateForName = simpleDateFormat.format(date);
-        String prefixProjectName = generateRandomString(prefixProjectNameLength);
-        return prefixProjectName + " current date" + dateForName;
-    }
+    // TODO delete
+//    public String generateRandomString(int length) {
+//        return RandomStringUtils.randomAlphabetic(length);
+//    }
+//
+//    public String generateTestProjectNameWithCurrentDate(int prefixProjectNameLength) {
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+//        Date date = new Date(System.currentTimeMillis());
+//        String dateForName = simpleDateFormat.format(date);
+//        String prefixProjectName = GenerateNames.generateRandomString(prefixProjectNameLength);
+//        return prefixProjectName + " current date" + dateForName;
+//    }
 }
