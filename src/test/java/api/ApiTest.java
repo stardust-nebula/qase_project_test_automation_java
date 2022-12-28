@@ -1,4 +1,4 @@
-package test.api;
+package api;
 
 import api.service.ProjectApiService;
 import api.service.SuiteApiService;

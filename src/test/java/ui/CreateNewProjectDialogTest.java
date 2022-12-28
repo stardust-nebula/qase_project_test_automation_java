@@ -1,49 +1,45 @@
-package test.ui;
+package ui;
 
 import model.Project;
 import model.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import ui.service.CreateNewProjectService;
 import ui.service.LoginPageService;
+import ui.service.ProjectRepositoryPageService;
 import ui.service.ProjectsPageService;
 
-public class ProjectsPageTest extends BaseTest {
-
+public class CreateNewProjectDialogTest extends BaseTest {
+    private static final int prefixProjectNameLength = 5;
+    private static final int prefixProjectCodeLength = 3;
     private LoginPageService loginPageService;
     private ProjectsPageService projectsPageService;
     private CreateNewProjectService createNewProjectService;
+    private ProjectRepositoryPageService projectRepositoryPageService;
     private static final User user = new User();
-    private static int prefixProjectNameLength = 5;
-    private static int prefixProjectCodeLength = 3;
 
     @BeforeClass
     public void setUp() {
         loginPageService = new LoginPageService();
         projectsPageService = new ProjectsPageService();
         createNewProjectService = new CreateNewProjectService();
+        projectRepositoryPageService = new ProjectRepositoryPageService();
         loginPageService.loginValidCredentials(user);
     }
 
     @Test
-    public void verifySuccessfulSearchExistingProjectTest() {
-        String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
-        String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
-        Project project = Project.builder()
-                .projectName(projectName)
-                .projectCode(projectCode)
-                .build();
-        createNewProjectService.openCreateNewProjectDialog();
-        createNewProjectService.fillInProjectInfoCreate(project);
-        projectsPageService.openProjectsPage();
-        projectsPageService.enterSearchCriteriaInSearchField(projectName);
-        boolean isProjectLocated = projectsPageService.isProjectByNamePresentOnPage(projectName);
-        Assert.assertTrue(isProjectLocated);
+    public void verifyMemberAccessComponentNotShownWhenPublicProjectAccessType() {
+        String projectAccessType = "Public";
+        createNewProjectService
+                .openCreateNewProjectDialog()
+                .chooseProjectAccessType(projectAccessType);
+        Assert.assertFalse(createNewProjectService.isMemberAccessComponentVisible(), "Member Access component is visible");
     }
 
-    @Test(testName = "Verify project is no more shown on the Projects page after deleting")
-    public void verifyProjectNotShownAfterDeleting() {
+    @Test
+    public void verifySuccessfulCreatingNewProject() {
         String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
         Project project = Project.builder()
@@ -52,8 +48,26 @@ public class ProjectsPageTest extends BaseTest {
                 .build();
         createNewProjectService.openCreateNewProjectDialog();
         createNewProjectService.fillInProjectInfoCreate(project);
-        projectsPageService.openProjectsPage();
-        boolean isProjectDisplaysInTable = projectsPageService.isProjectByNamePresentOnPage(projectName);
-        Assert.assertTrue(isProjectDisplaysInTable, "Project is shown on the page: '" + projectName + "'");
+        String actualPageTitle = projectRepositoryPageService.getProjectsRepositoryPageTitle();
+        Assert.assertTrue(actualPageTitle.contains(projectCode));
+    }
+
+    @Test
+    public void cancelCreationOfNewProject() {
+        String expectedProjectsPageTitle = "Projects";
+        String projectCode = createNewProjectService.generateRandomString(prefixProjectCodeLength).toUpperCase();
+        String projectName = createNewProjectService.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
+        Project project = Project.builder()
+                .projectName(projectName)
+                .projectCode(projectCode)
+                .build();
+        createNewProjectService.openCreateNewProjectDialog();
+        createNewProjectService.fillInProjectInfoCancelCreation(project);
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(projectsPageService.getPageTitle(), expectedProjectsPageTitle,
+                "'Projects' title not found. Probably wrong page is opened");
+        softAssert.assertFalse(projectsPageService.isProjectByNamePresentOnPage(projectName),
+                "Project is shown on the page");
+        softAssert.assertAll();
     }
 }

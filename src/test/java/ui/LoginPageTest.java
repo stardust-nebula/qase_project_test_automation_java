@@ -1,4 +1,4 @@
-package test.ui;
+package ui;
 
 import model.User;
 import org.testng.Assert;

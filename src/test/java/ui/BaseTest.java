@@ -1,4 +1,4 @@
-package test.ui;
+package ui;
 
 import org.testng.annotations.AfterClass;
 import ui.driver.DriverSingleton;
