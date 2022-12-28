@@ -4,6 +4,7 @@ import model.Project;
 import model.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import ui.service.CreateNewProjectService;
@@ -26,6 +27,11 @@ public class CreateNewProjectDialogTest extends BaseTest {
         projectsPageService = new ProjectsPageService();
         createNewProjectService = new CreateNewProjectService();
         projectRepositoryPageService = new ProjectRepositoryPageService();
+    }
+
+    @BeforeMethod
+    public void openProjectPage(){
+        projectsPageService.openProjectsPage();
     }
 
     @Test(testName = "Verify than Member Access Component is not shown when Public Project Access Type is selected")
