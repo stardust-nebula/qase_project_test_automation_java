@@ -7,7 +7,7 @@
             <class name="ui.LoginPageTest"></class>
         </classes>
     </test>
-    <test name="Login Page Test">
+    <test name="Create New Project Dialog Test">
         <classes>
             <class name="ui.CreateNewProjectDialogTest"></class>
         </classes>
