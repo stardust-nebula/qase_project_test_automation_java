@@ -13,7 +13,7 @@ pipeline {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
         booleanParam(defaultValue: true, description: 'Headless mode', name: 'HEADLESS')
         string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '')
-        choice(choices: ['chrome', 'firefox', 'safari', 'edge'], name: 'browser')
+        choice(choices: ['chrome', 'firefox', 'edge'], name: 'browser')
         choice(choices: ['src/test/resources/smoke.xml', 'src/test/resources/regression.xml'], name: 'surefire')
     }
 

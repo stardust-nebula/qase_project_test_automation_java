@@ -24,11 +24,6 @@ public class WebDriverFactory {
                 driver = new FirefoxDriver();
                 break;
             }
-            case "safari": {
-                WebDriverManager.safaridriver().setup();
-                driver = new SafariDriver();
-                break;
-            }
             case "edge": {
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
