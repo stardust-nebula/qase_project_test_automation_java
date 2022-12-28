@@ -13,18 +13,21 @@ pipeline {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
         booleanParam(defaultValue: true, description: 'Headless mode', name: 'HEADLESS')
         string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '')
-        choice(choices: ['chrome', 'firefox', 'safari', 'edge'], name: 'browser')
-        choice(choices: ['src/test/resources/smoke.xml', 'src/test/resources/regression.xml'], name: 'surefire')
+        choice(choices: ['chrome', 'firefox', 'safari', 'opera'], name: 'browser')
+        choice(choices: ['src/test/resources/testng-smoke.xml', 'src/test/resources/testng-regression.xml'], name: 'surefire')
     }
 
    stages {
       stage('Testing') {
          steps {
             // Get some code from a GitHub repository
-            git branch: "${params.BRANCH}", url: 'https://github.com/stardust-nebula/qase_project.git'
+            git branch: "${params.BRANCH}", url: 'https://github.com/stardust-nebula/hw2_6_saucedemo.git'
 
-            // To run Maven on a Windows agent
-            bat "mvn -Dmaven.test.failure.ignore=true -Dbrowser=chrome -Dsurefire.suiteXmlFiles=src/test/resources/smoke.xml clean test"
+            // Run Maven on a Unix agent.
+            //sh "mvn clean test"
+
+            // To run Maven on a Windows agent, use
+            bat "mvn -Dmaven.test.failure.ignore=true -Dbrowser=chrome -Dsurefire.suiteXmlFiles=src/test/resources/testng-smoke.xml clean test"
          }
 
          post {
