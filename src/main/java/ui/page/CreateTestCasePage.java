@@ -27,7 +27,7 @@ public class CreateTestCasePage extends BasePage {
     @Step("Click on the 'Save' button to save a new test case")
     public void clickOnSaveButton() {
         log.info("Click on the 'Save' button to save a new test case");
-        waitVisibilityOfElement(saveButton).click();
+        waitElementToBeClickable(saveButton).click();
         AllureUtils.takeScreenshot(driver);
     }
 }

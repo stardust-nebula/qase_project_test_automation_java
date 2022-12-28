@@ -62,6 +62,6 @@ public class CreateNewSuiteDialog extends BasePage {
     @Step("Click on the 'Create' button")
     public void clickCreateButton() {
         log.info("Click on 'Create' button");
-        waitVisibilityOfElement(createButton).click();
+        waitElementToBeClickable(createButton).click();
     }
 }

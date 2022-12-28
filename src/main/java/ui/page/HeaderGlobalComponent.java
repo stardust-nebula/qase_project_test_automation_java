@@ -18,7 +18,7 @@ public class HeaderGlobalComponent extends BasePage{
     @Step("Click on the user's profile icon in the header")
     public HeaderGlobalComponent clickOnUserProfileIcon(){
         log.info("Click on the user's profile icon in the header");
-        waitVisibilityOfElement(userProfileIcon).click();
+        waitElementToBeClickable(userProfileIcon).click();
         AllureUtils.takeScreenshot(driver);
         return new HeaderGlobalComponent();
     }
@@ -26,7 +26,7 @@ public class HeaderGlobalComponent extends BasePage{
     @Step("Click on the Sign out")
     public void clickSignOutOption(){
         log.info("Click on the Sign out");
-        waitVisibilityOfElement(signOutOptionElement).click();
+        waitElementToBeClickable(signOutOptionElement).click();
         AllureUtils.takeScreenshot(driver);
     }
 }

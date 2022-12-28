@@ -16,7 +16,6 @@ public class CreateTestCasePageTest extends BaseTest {
     private ProjectRepositoryPageService projectRepositoryPageService;
     private CreateTestCasePageService createTestCasePageService;
 
-
     @BeforeClass
     public void setUp() {
         new LoginPageService().loginValidCredentials(new User());

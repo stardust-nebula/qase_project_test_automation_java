@@ -32,7 +32,7 @@ public class ProjectsPage extends BasePage {
     @Step("Click on the 'Create new project' button")
     public void clickOnCreateNewProject() {
         log.info("Click on the 'Create new project' button");
-        waitVisibilityOfElement(createNewProjectButton).click();
+        waitElementToBeClickable(createNewProjectButton).click();
         AllureUtils.takeScreenshot(driver);
     }
 

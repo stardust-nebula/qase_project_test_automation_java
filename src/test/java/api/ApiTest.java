@@ -59,7 +59,7 @@ public class ApiTest {
         Assert.assertTrue(status);
     }
 
-    @Test
+    @Test(testName = "Verify success status on successful changing suite's description")
     public void verifySuccessfulUpdatingSuiteDescriptionTest() {
         String suiteName = "Smoke Test Suite";
         String newSuiteDescription = " New description for the suite";

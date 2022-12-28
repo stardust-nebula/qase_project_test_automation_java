@@ -50,7 +50,7 @@ public class LoginPage extends BasePage {
     @Step("Click on the 'Login' button")
     public void clickLoginButton() {
         log.info("Click on 'Login' button");
-        waitVisibilityOfElement(loginButton).click();
+        waitElementToBeClickable(loginButton).click();
         AllureUtils.takeScreenshot(driver);
     }
 

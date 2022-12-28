@@ -30,14 +30,14 @@ public class ProjectRepositoryPage extends BasePage {
     @Step("Click on the '+ Suite' button")
     public void clickOnAddSuiteButton() {
         log.info("Click on the '+ Suite' button");
-        waitVisibilityOfElement(addSuiteButton).click();
+        waitElementToBeClickable(addSuiteButton).click();
         AllureUtils.takeScreenshot(driver);
     }
 
     @Step("Click on the '+ Case' button")
     public void clickOnAddCaseButton() {
         log.info("Click on the '+ Case' button");
-        waitVisibilityOfElement(addCaseButton).click();
+        waitElementToBeClickable(addCaseButton).click();
         AllureUtils.takeScreenshot(driver);
     }
 

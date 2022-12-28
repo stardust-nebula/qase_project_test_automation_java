@@ -71,7 +71,7 @@ public class CreateNewProjectDialog extends BasePage {
         if (accessType != null) {
             log.info("Choose project access type");
             By accessTypeRadioButton = getElementLocatorByPathAndOneParam(projectAccessTypeRadioButtonPath, accessType.toLowerCase());
-            waitVisibilityOfElement(driver.findElement(accessTypeRadioButton)).click();
+            waitElementToBeClickable(driver.findElement(accessTypeRadioButton)).click();
         } else {
             log.info("Project access type left default");
         }
@@ -82,14 +82,14 @@ public class CreateNewProjectDialog extends BasePage {
     @Step("Click on the 'Create project' button")
     public void clickCreateProjectButton() {
         log.info("Click on the 'Create project' button");
-        waitVisibilityOfElement(createProjectButton).click();
+        waitElementToBeClickable(createProjectButton).click();
         AllureUtils.takeScreenshot(driver);
     }
 
     @Step("Click on the 'Cancel' button")
     public void clickCancelButton() {
         log.info("Click on the 'Cancel' button");
-        waitVisibilityOfElement(cancelButton).click();
+        waitElementToBeClickable(cancelButton).click();
         AllureUtils.takeScreenshot(driver);
     }
 
