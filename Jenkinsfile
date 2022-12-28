@@ -14,7 +14,7 @@ pipeline {
         booleanParam(defaultValue: true, description: 'Headless mode', name: 'HEADLESS')
         string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '')
         choice(choices: ['chrome', 'firefox', 'safari', 'opera'], name: 'browser')
-        choice(choices: ['src/test/resources/testng-smoke.xml', 'src/test/resources/testng-regression.xml'], name: 'surefire')
+        choice(choices: ['src/test/resources/smoke.xml', 'src/test/resources/regression.xml'], name: 'surefire')
     }
 
    stages {
