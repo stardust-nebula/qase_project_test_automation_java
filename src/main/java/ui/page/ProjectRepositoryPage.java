@@ -43,21 +43,16 @@ public class ProjectRepositoryPage extends BasePage {
 
     public boolean isSuiteByNamePresent(String suiteName) {
         log.info("Check suite by name is shown on the Repository page");
-        AllureUtils.takeScreenshot(driver);
+        boolean isSuiteNameOnPage;
         By suiteNameInListElement = getElementLocatorByPathAndOneParam(suitePath, suiteName);
         try {
             driver.findElement(suiteNameInListElement).isDisplayed();
-            return true;
+            isSuiteNameOnPage = true;
         } catch (NoSuchElementException e) {
-            return false;
+            isSuiteNameOnPage = false;
         }
-    }
-
-    public void clickOnSuiteNameInList(String suiteName) {
-        log.info("Click on the suite name in the list of suites: " + suiteName);
-        By suiteNameInListElement = getElementLocatorByPathAndOneParam(suitePath, suiteName);
-        driver.findElement(suiteNameInListElement).click();
         AllureUtils.takeScreenshot(driver);
+        return isSuiteNameOnPage;
     }
 
     public boolean isAlertOnTestCaseCreatedSuccessfullyAppears() {

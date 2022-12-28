@@ -24,10 +24,6 @@ public class ProjectRepositoryPageService {
         return projectRepositoryPage.isSuiteByNamePresent(suiteName);
     }
 
-    public void clickOnSuiteNameInTheList(String suiteName) {
-        projectRepositoryPage.clickOnSuiteNameInList(suiteName);
-    }
-
     public boolean isAlertOnTestCaseCreatedSuccessfullyAppears() {
         return projectRepositoryPage.isAlertOnTestCaseCreatedSuccessfullyAppears();
     }
