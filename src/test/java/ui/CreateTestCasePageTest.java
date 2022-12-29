@@ -9,6 +9,7 @@ import ui.service.CreateTestCasePageService;
 import ui.service.LoginPageService;
 import ui.service.ProjectRepositoryPageService;
 import ui.service.ProjectsPageService;
+import ui.util.Retry;
 
 public class CreateTestCasePageTest extends BaseTest {
 
@@ -24,7 +25,9 @@ public class CreateTestCasePageTest extends BaseTest {
         createTestCasePageService = new CreateTestCasePageService();
     }
 
-    @Test(testName = "Alert on successful test case creation", description = "Verify that alert on successful test case creation")
+    @Test(testName = "Alert on successful test case creation",
+            description = "Verify that alert on successful test case creation",
+            retryAnalyzer = Retry.class)
     public void verifyAlertOnSuccessfulCreationOfTestCaseTest() {
         String expectedSuccessMessage = "Test case was created successfully!";
         String testCaseTitle = "Login with valid credentials";

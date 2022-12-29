@@ -7,6 +7,7 @@ import org.testng.asserts.SoftAssert;
 import ui.service.LoginPageService;
 import ui.service.ProjectSettingsPageService;
 import ui.service.ProjectsPageService;
+import ui.util.Retry;
 
 public class ProjectSettingsPageTest extends BaseTest {
 
@@ -23,7 +24,8 @@ public class ProjectSettingsPageTest extends BaseTest {
     }
 
     @Test(testName = "Success alert appears on successful changing project's description",
-            description = "Verify success alert appears on successful changing project's description")
+            description = "Verify success alert appears on successful changing project's description",
+            retryAnalyzer = Retry.class)
     public void verifySuccessAlertOnChangingProjectDescriptionTest() {
         String newDescription = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.";
         String expectedSuccessText = "Project settings were successfully updated!";

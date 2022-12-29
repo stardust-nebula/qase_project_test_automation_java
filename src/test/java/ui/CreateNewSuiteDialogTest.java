@@ -11,6 +11,7 @@ import ui.service.CreateNewProjectService;
 import ui.service.CreateNewSuiteDialogService;
 import ui.service.LoginPageService;
 import ui.service.ProjectRepositoryPageService;
+import ui.util.Retry;
 
 public class CreateNewSuiteDialogTest extends BaseTest {
 
@@ -29,7 +30,9 @@ public class CreateNewSuiteDialogTest extends BaseTest {
         createNewSuiteDialogService = new CreateNewSuiteDialogService();
     }
 
-    @Test(testName = "Successful creation of a New Suite", description = "Verify successful creation of a New Suite")
+    @Test(testName = "Successful creation of a New Suite",
+            description = "Verify successful creation of a New Suite",
+            retryAnalyzer = Retry.class)
     public void verifySuccessfulNewSuiteCreationTest() {
         String suiteName = "Regression";
         Suite suite = Suite.builder()

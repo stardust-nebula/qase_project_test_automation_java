@@ -12,6 +12,7 @@ import ui.service.CreateNewProjectService;
 import ui.service.LoginPageService;
 import ui.service.ProjectRepositoryPageService;
 import ui.service.ProjectsPageService;
+import ui.util.Retry;
 
 public class CreateNewProjectDialogTest extends BaseTest {
     private static final int prefixProjectNameLength = 5;
@@ -36,7 +37,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
     }
 
     @Test(testName = "Member Access Component is not shown when Public Project Access Type is selected",
-    description = "Verify than Member Access Component is not shown when Public Project Access Type is selected")
+    description = "Verify than Member Access Component is not shown when Public Project Access Type is selected",
+            retryAnalyzer = Retry.class)
     public void verifyMemberAccessComponentNotShownWhenPublicProjectAccessTypeTest() {
         String projectAccessType = "Public";
         createNewProjectService
@@ -45,7 +47,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
         Assert.assertFalse(createNewProjectService.isMemberAccessComponentVisible(), "Member Access component is visible");
     }
 
-    @Test(testName = "Successful creation of New Project", description = "Verify successful creation of New Project")
+    @Test(testName = "Successful creation of New Project", description = "Verify successful creation of New Project",
+            retryAnalyzer = Retry.class)
     public void verifySuccessfulCreatingNewProjectTest() {
         String projectCode = GenerateNames.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = GenerateNames.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
@@ -60,7 +63,8 @@ public class CreateNewProjectDialogTest extends BaseTest {
     }
 
     @Test(testName = "Successful canceling on creating a New Project",
-            description = "Verify successful canceling on creating a New Project")
+            description = "Verify successful canceling on creating a New Project",
+            retryAnalyzer = Retry.class)
     public void verifySuccessfulCancelingOnCreationNewProjectTest() {
         String expectedProjectsPageTitle = "Projects";
         String projectCode = GenerateNames.generateRandomString(prefixProjectCodeLength).toUpperCase();

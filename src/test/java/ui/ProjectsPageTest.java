@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import ui.service.CreateNewProjectService;
 import ui.service.LoginPageService;
 import ui.service.ProjectsPageService;
+import ui.util.Retry;
 
 public class ProjectsPageTest extends BaseTest {
 
@@ -26,7 +27,8 @@ public class ProjectsPageTest extends BaseTest {
     }
 
     @Test(testName = "Successful searching for existing project",
-            description = "Verify successful searching for existing project")
+            description = "Verify successful searching for existing project",
+            retryAnalyzer = Retry.class)
     public void verifySuccessfulSearchExistingProjectTest() {
         String projectCode = GenerateNames.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = GenerateNames.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
@@ -43,7 +45,8 @@ public class ProjectsPageTest extends BaseTest {
     }
 
     @Test(testName = "Project is no more shown on the Projects page after deleting",
-            description = "Verify project is no more shown on the Projects page after deleting")
+            description = "Verify project is no more shown on the Projects page after deleting",
+            retryAnalyzer = Retry.class)
     public void verifyProjectNotShownAfterDeletingTest() {
         String projectCode = GenerateNames.generateRandomString(prefixProjectCodeLength).toUpperCase();
         String projectName = GenerateNames.generateTestProjectNameWithCurrentDate(prefixProjectNameLength);
