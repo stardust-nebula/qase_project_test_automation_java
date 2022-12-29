@@ -4,9 +4,12 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import ui.driver.DriverSingleton;
+import ui.util.TestListener;
 
 @Log4j2
+@Listeners(TestListener.class)
 public class BaseTest {
     protected WebDriver driver;
 

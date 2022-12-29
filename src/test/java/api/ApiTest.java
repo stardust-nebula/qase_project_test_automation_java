@@ -1,9 +1,9 @@
 package api;
 
-import api.util.GenerateNames;
 import api.service.ProjectApiService;
 import api.service.SuiteApiService;
 import api.service.TestCaseApiService;
+import api.util.GenerateNames;
 import io.restassured.response.Response;
 import model.Project;
 import model.Suite;
