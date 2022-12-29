@@ -2,33 +2,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="Regression: UI + API" thread-count="4" parallel="classes">
-    <test name="Login Page Test">
+    <test name="UI Test">
         <classes>
             <class name="ui.LoginPageTest"></class>
-        </classes>
-    </test>
-    <test name="Create New Project Dialog Test">
-        <classes>
             <class name="ui.CreateNewProjectDialogTest"></class>
-        </classes>
-    </test>
-    <test name="Projects Page Test">
-        <classes>
-            <class name="ui.ProjectsPageTest"></class>
-        </classes>
-    </test>
-    <test name="Project Settings Page Test">
-        <classes>
             <class name="ui.ProjectSettingsPageTest"></class>
-        </classes>
-    </test>
-    <test name="Create New Suite Dialog Test">
-        <classes>
+            <class name="ui.ProjectsPageTest"></class>
             <class name="ui.CreateNewSuiteDialogTest"></class>
-        </classes>
-    </test>
-    <test name="Create New Test Case Page Test">
-        <classes>
             <class name="ui.CreateTestCasePageTest"></class>
         </classes>
     </test>
