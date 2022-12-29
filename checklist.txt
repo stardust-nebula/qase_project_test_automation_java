@@ -1,0 +1,18 @@
+UI Checklist
+1. Verify successful authorization with valid credentials
+2. Verify unsuccessful authorization with invalid credentials
+3. Verify than Member Access Component is not shown when Public Project Access Type is selected
+4. Verify successful creation of New Project
+5. Verify successful canceling on creating a New Project
+6. Verify success alert appears on successful changing project's description
+7. Verify successful searching for existing project
+8. Verify project is no more shown on the Projects page after deleting
+9. Verify successful creation of a New Suite
+10. Verify that alert on successful test case creation
+
+API Checklist
+1. Verify Status Code = 200 on getting all projects
+2. Verify project's code once project is created
+3. Verify getting 'true' status on successful creating new suite
+4. Verify success status on successful changing suite's description
+5. Verify Status code = 404 on second try deleting previously existed test case
