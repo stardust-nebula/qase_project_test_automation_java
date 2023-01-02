@@ -4,17 +4,17 @@
 <suite name="Regression: UI + API" thread-count="4" parallel="classes">
     <test name="UI Test">
         <classes>
-            <class name="ui.LoginPageTest"></class>
-            <class name="ui.CreateNewProjectDialogTest"></class>
-            <class name="ui.ProjectSettingsPageTest"></class>
-            <class name="ui.ProjectsPageTest"></class>
-            <class name="ui.CreateNewSuiteDialogTest"></class>
-            <class name="ui.CreateTestCasePageTest"></class>
+            <class name="io.qase.tests.ui.LoginPageTest"></class>
+            <class name="io.qase.tests.ui.CreateNewProjectDialogTest"></class>
+            <class name="io.qase.tests.ui.ProjectSettingsPageTest"></class>
+            <class name="io.qase.tests.ui.ProjectsPageTest"></class>
+            <class name="io.qase.tests.ui.CreateNewSuiteDialogTest"></class>
+            <class name="io.qase.tests.ui.CreateTestCasePageTest"></class>
         </classes>
     </test>
     <test name="API Test">
         <classes>
-            <class name="api.ApiTest"></class>
+            <class name="io.qase.tests.api.ApiTest"></class>
         </classes>
     </test>
 </suite>
