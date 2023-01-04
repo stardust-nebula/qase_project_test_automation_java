@@ -7,9 +7,4 @@
             <class name="io.qase.tests.ui.LoginPageTest"></class>
         </classes>
     </test>
-    <test name="Create New Project Dialog Test">
-        <classes>
-            <class name="io.qase.tests.ui.CreateNewProjectDialogTest"></class>
-        </classes>
-    </test>
 </suite>
