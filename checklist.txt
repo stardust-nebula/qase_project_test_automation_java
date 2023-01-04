@@ -11,8 +11,8 @@ UI Checklist
 10. Verify that alert on successful test case creation
 
 API Checklist
-1. Verify Status Code = 200 on getting all projects
-2. Verify project's code once project is created
-3. Verify getting 'true' status on successful creating new suite
-4. Verify success status on successful changing suite's description
-5. Verify Status code = 404 on second try deleting previously existed test case
+1. Verify Status Code = 200 on calling all projects endpoint GET /project
+2. Verify project's code once project is created POST /project
+3. Verify getting 'true' status on successful creating new suite POST /suite/{projectCode}
+4. Verify success status on successful changing suite's description PATCH /suite/{projectCode}/{suiteId}
+5. Verify Status code = 404 on second try deleting previously existed test case DELETE /case/{projectCode}/{testCaseId}

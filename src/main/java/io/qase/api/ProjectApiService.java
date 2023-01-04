@@ -14,6 +14,4 @@ public class ProjectApiService extends BaseApiService {
         return post(PROJECT_API_ENDPOINT, converter.toJson(project));
     }
 
-
-
 }
