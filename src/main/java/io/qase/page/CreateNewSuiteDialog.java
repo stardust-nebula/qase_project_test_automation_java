@@ -9,13 +9,13 @@ import io.qase.util.AllureUtils;
 @Log4j2
 public class CreateNewSuiteDialog extends BasePage {
 
-    @FindBy(xpath = "//input[@id='name']")
+    @FindBy(xpath = "//input[@id='title']")
     private WebElement suiteNameField;
 
-    @FindBy(xpath = "//label[text()='Description']/following-sibling::div[contains(@class,'container')]")
+    @FindBy(xpath = "//label[text()='Description']/parent::div/following-sibling::div//p")   //label[text()='Description']/following-sibling::div[contains(@class,'container')]
     private WebElement descriptionField;
 
-    @FindBy(xpath = "//label[text()='Preconditions']/following-sibling::div[1]")
+    @FindBy(xpath = "//label[text()='Preconditions']/parent::div/following-sibling::div//p")  //label[text()='Preconditions']/following-sibling::div[1]
     private WebElement preconditionsField;
 
     @FindBy(xpath = "//button[@type='submit']")
