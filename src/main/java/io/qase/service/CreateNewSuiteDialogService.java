@@ -21,4 +21,5 @@ public class CreateNewSuiteDialogService {
                 .clickCreateButton();
         return new ProjectRepositoryPage();
     }
+    // Local comment 2
 }

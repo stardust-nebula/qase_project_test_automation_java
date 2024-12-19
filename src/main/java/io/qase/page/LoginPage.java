@@ -27,6 +27,7 @@ public class LoginPage extends BasePage {
         driver.get(url);
         AllureUtils.takeScreenshot(driver);
         return this;
+        // Commit 2000
     }
 
     @Step("Enter email in the 'email' field")

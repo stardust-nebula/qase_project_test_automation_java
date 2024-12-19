@@ -21,6 +21,7 @@ public class HeaderGlobalComponent extends BasePage{
         waitElementToBeClickable(userProfileIcon).click();
         AllureUtils.takeScreenshot(driver);
         return new HeaderGlobalComponent();
+        // Commit 3000
     }
 
     @Step("Click on the Sign out")
