@@ -11,7 +11,7 @@ import io.qase.page.ProjectsPage;
 public class CreateNewProjectService {
     private CreateNewProjectDialog createNewProjectDialog = new CreateNewProjectDialog();
     private ProjectsPage projectsPage = new ProjectsPage();
-
+// Comment 1 local
     @Step("Open 'Create new project dialog")
     public CreateNewProjectDialog openCreateNewProjectDialog() {
         log.info("Open 'Create new project dialog");
