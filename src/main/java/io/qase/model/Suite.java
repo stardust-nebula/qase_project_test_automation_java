@@ -15,5 +15,5 @@ public class Suite {
     private String suiteName;
     private String description;
     private String preconditions;
-
+// Test squash 2 - 2
 }
