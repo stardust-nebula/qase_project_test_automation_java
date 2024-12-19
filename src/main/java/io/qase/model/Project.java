@@ -22,4 +22,5 @@ public class Project {
     @SerializedName("group")
     private String accessGroup;
 // comment from master 4000
+    // Test squash 2 - 1
 }
