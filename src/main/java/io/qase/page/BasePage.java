@@ -21,6 +21,8 @@ public abstract class BasePage {
         PageFactory.initElements(driver, this);
         //Commit 1000
         // Master change 2 - 1
+        // ******
+        // Master change 3 - 1
     }
 
     protected WebElement waitVisibilityOfElement(WebElement element) {
