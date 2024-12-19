@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class User {
     private String email = "gykyz@mailto.plus";
     private String password = "123456789";
+    //  Squash 3-3
 }
